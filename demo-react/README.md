@@ -1,8 +1,8 @@
-# React + Vite
+# mini react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+main分支 完整代码  
+step 分支，按功能完成代码，按序号递加  
 
-Currently, two official plugins are available:
+### step01 
+通过原生JS创建DOM的方式，添加到页面。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
