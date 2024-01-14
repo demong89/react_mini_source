@@ -41,7 +41,7 @@ function createElement(tagName, props, ...children){
 
 
 const textNode = createTextNode('1231321');
-const element = createElement('div',{id:'app'},'nihao','zhangjiakou');
+const element = createElement('div',{id:'app'},'nihao','beijing', 'ser');
 
 
 // 模拟render 函数
@@ -62,8 +62,22 @@ function render(el, container){
    container.appendChild(dom);
 }
 // console.log(element);
-render(element, document.querySelector('#root'));
+// render(element, document.querySelector('#root'));
 
+
+
+const ReactDOM = {
+    createRoot(container){
+        return {
+            render(App){
+                render(App, container)
+            }
+        }
+    }
+}
+
+
+ReactDOM.createRoot(document.querySelector('#root')).render(element)
 
 // 通过原生JS的方式在DOM中添加一个div元素
 // const app = document.createElement(element.type);
