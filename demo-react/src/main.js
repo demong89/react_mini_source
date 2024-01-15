@@ -1,83 +1,29 @@
-const vdom = {
-    type:'div',
-    props:{
-        id:'app',
-        children:[
-            {
-                type:'TEXT_ELEMENT',
-                nodeValue:'hello'
-            }
-        ]
-    },
+// const vdom = {
+//     type:'div',
+//     props:{
+//         id:'app',
+//         children:[
+//             {
+//                 type:'TEXT_ELEMENT',
+//                 nodeValue:'hello'
+//             }
+//         ]
+//     },
     
-};
+// };
 
-function createTextNode(value){ // 数据格式保持一致
-    return {
-        type:'TEXT_ELEMENT',
-        props:{
-            nodeValue:value,
-            children:[]
-        }
-    }
-}
-
-function createElement(tagName, props, ...children){
-    return {
-        type:tagName,
-        props:{
-            ...props,
-            children:children.map(child=>{
-                
-                if(typeof child === 'string'){
-                    return createTextNode(child)
-                }else{
-                    return child;
-                }
-            })
-        }
-    }
-}
+import ReactDOM from './core/ReactDOM.js';
+import App from './App.js'
 
 
-const textNode = createTextNode('1231321');
-const element = createElement('div',{id:'app'},'nihao','beijing', 'ser');
-
-
-// 模拟render 函数
-function render(el, container){
-    const dom = el.type === 'TEXT_ELEMENT'? document.createTextNode(''):document.createElement(el.type);
-    // console.log(el.props);
-    const props = el.props&&Object.keys(el.props);
-    props?.forEach(prop=>{
-        if(prop!=='children'){ // 不是children属性
-            dom[prop] = el.props[prop];
-        }
-    })
-    if(el.props.children && el.props.children.length){
-        el.props.children.forEach(child=>{
-            render(child, dom);
-        })
-    }
-   container.appendChild(dom);
-}
 // console.log(element);
 // render(element, document.querySelector('#root'));
 
 
 
-const ReactDOM = {
-    createRoot(container){
-        return {
-            render(App){
-                render(App, container)
-            }
-        }
-    }
-}
 
 
-ReactDOM.createRoot(document.querySelector('#root')).render(element)
+ReactDOM.createRoot(document.querySelector('#root')).render(App)
 
 // 通过原生JS的方式在DOM中添加一个div元素
 // const app = document.createElement(element.type);
